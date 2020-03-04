@@ -13,8 +13,8 @@
 ![microservice](https://github.com/yufeng629/dist_architecture/blob/master/docs/biz_service.png)
 
 ## 组件封装  
-**RockemtMQ：**封装了RockemtMQ发送端，让普通开发人员不必弄懂RocketMQ的原理和API，开箱即用，降低门槛，同时也为后续的系统拓展和监控做预留  
-**Redis：**封装Redis的客户端，使开发人员不必拘泥于其集群模式，开箱机用，同时也为后续的监控和热点key的处理做预留  
+**RockemtMQ**：封装了RockemtMQ发送端，让普通开发人员不必弄懂RocketMQ的原理和API，开箱即用，降低门槛，同时也为后续的系统拓展和监控做预留  
+**Redis**：封装Redis的客户端，使开发人员不必拘泥于其集群模式，开箱机用，同时也为后续的监控和热点key的处理做预留  
 **Redis分布式锁：**封装好了加锁、释放锁、锁的续租功能，开箱即用  
 **Elasticsearch：**封装了ES的查询客户端，以接近sql的方式让开发人员不必懂太多ES内容，可以完成常规业务的查询功能，也是开箱即用  
 **FastDFS：**封装fastdfs的客户端，解决了其集群故障时无法自动故障转移的问题，开箱即用，开发人员不必关心fastdfs的内容  
