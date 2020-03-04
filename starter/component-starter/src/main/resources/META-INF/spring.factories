@@ -1,0 +1,8 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.xpay.starter.comp.config.EsAutoConfiguration,\
+com.xpay.starter.comp.config.RedisLockAutoConfiguration,\
+com.xpay.starter.comp.config.JedisAutoConfiguration,\
+com.xpay.starter.comp.config.RMQAutoConfiguration,\
+com.xpay.starter.comp.config.EmailAutoConfiguration,\
+com.xpay.starter.comp.config.FastdfsAutoConfiguration

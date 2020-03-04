@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: inner-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: @nacosAddr@
+        namespace: @nacosNamespace@
+        file-extension: yaml

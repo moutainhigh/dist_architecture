@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: @nacosAddr@
+        namespace: @nacosNamespace@
+        file-extension: yaml

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xpay.facade.config.entity.BankList">
+	<sql id="table"> tbl_bank_bank_list </sql>
+
+	<!-- 用于返回的bean对象 -->
+	<resultMap id="BaseResultMap" type="com.xpay.facade.config.entity.BankList">
+		<result column="ID" property="id" jdbcType="BIGINT"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="SHORT_NAME" property="shortName" jdbcType="VARCHAR"/>
+		<result column="FULL_NAME" property="fullName" jdbcType="VARCHAR"/>
+		<result column="BANK_TYPE" property="bankType" jdbcType="SMALLINT"/>
+		<result column="TRADE_TYPE" property="tradeType" jdbcType="VARCHAR"/>
+		<result column="STATUS" property="status" jdbcType="SMALLINT"/>
+		<result column="NUCC_IDENTIFY" property="nuccIdentify" jdbcType="VARCHAR"/>
+		<result column="B2B_CODE" property="b2bCode" jdbcType="VARCHAR"/>
+		<result column="B2C_CODE" property="b2cCode" jdbcType="VARCHAR"/>
+		<result column="IS_B2B" property="isB2b" jdbcType="BIT"/>
+		<result column="IS_B2C" property="isB2c" jdbcType="BIT"/>
+		<result column="IS_CHARGE" property="isCharge" jdbcType="BIT"/>
+		<result column="IS_PAY" property="isPay" jdbcType="BIT"/>
+		<result column="IS_AUTH" property="isAuth" jdbcType="BIT"/>
+		<result column="IS_FASTPAY" property="isFastpay" jdbcType="BIT"/>
+		<result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,
+		CREATE_TIME,
+		SHORT_NAME,
+		FULL_NAME,
+		BANK_TYPE,
+		TRADE_TYPE,
+		STATUS,
+		NUCC_IDENTIFY,
+		B2B_CODE,
+		B2C_CODE,
+		IS_B2B,
+		IS_B2C,
+		IS_CHARGE,
+		IS_PAY,
+		IS_AUTH,
+		IS_FASTPAY,
+		REMARK
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xpay.facade.config.entity.BankList">
+		INSERT INTO <include refid="table" /> (
+        	CREATE_TIME,
+        	SHORT_NAME,
+        	FULL_NAME,
+        	BANK_TYPE,
+        	TRADE_TYPE,
+        	STATUS,
+        	NUCC_IDENTIFY,
+        	B2B_CODE,
+        	B2C_CODE,
+        	IS_B2B,
+        	IS_B2C,
+        	IS_CHARGE,
+        	IS_PAY,
+        	IS_AUTH,
+        	IS_FASTPAY,
+        	REMARK
+        ) VALUES (
+			#{createTime,jdbcType=TIMESTAMP},
+			#{shortName,jdbcType=VARCHAR},
+			#{fullName,jdbcType=VARCHAR},
+			#{bankType,jdbcType=SMALLINT},
+			#{tradeType,jdbcType=VARCHAR},
+			#{status,jdbcType=SMALLINT},
+			#{nuccIdentify,jdbcType=VARCHAR},
+			#{b2bCode,jdbcType=VARCHAR},
+			#{b2cCode,jdbcType=VARCHAR},
+			#{isB2b,jdbcType=BIT},
+			#{isB2c,jdbcType=BIT},
+			#{isCharge,jdbcType=BIT},
+			#{isPay,jdbcType=BIT},
+			#{isAuth,jdbcType=BIT},
+			#{isFastpay,jdbcType=BIT},
+			#{remark,jdbcType=VARCHAR}
+        )
+	</insert>
+
+	<!-- 批量插入记录 -->
+	<insert id="batchInsert" useGeneratedKeys="true" keyProperty="id" parameterType="list">
+		INSERT INTO <include refid="table" /> (
+        	CREATE_TIME,
+        	SHORT_NAME,
+        	FULL_NAME,
+        	BANK_TYPE,
+        	TRADE_TYPE,
+        	STATUS,
+        	NUCC_IDENTIFY,
+        	B2B_CODE,
+        	B2C_CODE,
+        	IS_B2B,
+        	IS_B2C,
+        	IS_CHARGE,
+        	IS_PAY,
+        	IS_AUTH,
+        	IS_FASTPAY,
+        	REMARK
+        ) VALUES 
+			<foreach collection="list" item="item" separator=",">
+			(
+			#{item.createTime,jdbcType=TIMESTAMP},
+			#{item.shortName,jdbcType=VARCHAR},
+			#{item.fullName,jdbcType=VARCHAR},
+			#{item.bankType,jdbcType=SMALLINT},
+			#{item.tradeType,jdbcType=VARCHAR},
+			#{item.status,jdbcType=SMALLINT},
+			#{item.nuccIdentify,jdbcType=VARCHAR},
+			#{item.b2bCode,jdbcType=VARCHAR},
+			#{item.b2cCode,jdbcType=VARCHAR},
+			#{item.isB2b,jdbcType=BIT},
+			#{item.isB2c,jdbcType=BIT},
+			#{item.isCharge,jdbcType=BIT},
+			#{item.isPay,jdbcType=BIT},
+			#{item.isAuth,jdbcType=BIT},
+			#{item.isFastpay,jdbcType=BIT},
+			#{item.remark,jdbcType=VARCHAR}
+			)
+			</foreach>
+	</insert>
+
+	<!-- 更新 -->
+	<update id="update" parameterType="com.xpay.facade.config.entity.BankList">
+        UPDATE <include refid="table" />
+		<set>
+			CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			SHORT_NAME = #{shortName,jdbcType=VARCHAR},
+			FULL_NAME = #{fullName,jdbcType=VARCHAR},
+			BANK_TYPE = #{bankType,jdbcType=SMALLINT},
+			TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+			STATUS = #{status,jdbcType=SMALLINT},
+			NUCC_IDENTIFY = #{nuccIdentify,jdbcType=VARCHAR},
+			B2B_CODE = #{b2bCode,jdbcType=VARCHAR},
+			B2C_CODE = #{b2cCode,jdbcType=VARCHAR},
+			IS_B2B = #{isB2b,jdbcType=BIT},
+			IS_B2C = #{isB2c,jdbcType=BIT},
+			IS_CHARGE = #{isCharge,jdbcType=BIT},
+			IS_PAY = #{isPay,jdbcType=BIT},
+			IS_AUTH = #{isAuth,jdbcType=BIT},
+			IS_FASTPAY = #{isFastpay,jdbcType=BIT},
+			REMARK = #{remark,jdbcType=VARCHAR}
+		</set>
+        WHERE ID = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 只更新不为null的属性 -->
+	<update id="updateIfNotNull" parameterType="com.xpay.facade.config.entity.BankList">
+		UPDATE <include refid="table" />
+		<set>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="shortName != null">
+				SHORT_NAME = #{shortName,jdbcType=VARCHAR},
+			</if>
+			<if test="fullName != null">
+				FULL_NAME = #{fullName,jdbcType=VARCHAR},
+			</if>
+			<if test="bankType != null">
+				BANK_TYPE = #{bankType,jdbcType=SMALLINT},
+			</if>
+			<if test="tradeType != null">
+				TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=SMALLINT},
+			</if>
+			<if test="nuccIdentify != null">
+				NUCC_IDENTIFY = #{nuccIdentify,jdbcType=VARCHAR},
+			</if>
+			<if test="b2bCode != null">
+				B2B_CODE = #{b2bCode,jdbcType=VARCHAR},
+			</if>
+			<if test="b2cCode != null">
+				B2C_CODE = #{b2cCode,jdbcType=VARCHAR},
+			</if>
+			<if test="isB2b != null">
+				IS_B2B = #{isB2b,jdbcType=BIT},
+			</if>
+			<if test="isB2c != null">
+				IS_B2C = #{isB2c,jdbcType=BIT},
+			</if>
+			<if test="isCharge != null">
+				IS_CHARGE = #{isCharge,jdbcType=BIT},
+			</if>
+			<if test="isPay != null">
+				IS_PAY = #{isPay,jdbcType=BIT},
+			</if>
+			<if test="isAuth != null">
+				IS_AUTH = #{isAuth,jdbcType=BIT},
+			</if>
+			<if test="isFastpay != null">
+				IS_FASTPAY = #{isFastpay,jdbcType=BIT},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR}
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 多条件组合查询 -->
+	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		<include refid="table" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		<choose>
+			<when test="sortColumns != null and sortColumns !='' ">
+				<![CDATA[ ORDER BY ${sortColumns} ]]>
+			</when>
+			<otherwise>
+				<![CDATA[ ORDER BY ID DESC ]]>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- 根据多条件组合查询，计算总记录数 -->
+	<select id="countBy" parameterType="java.util.Map" resultType="long">
+		SELECT count(ID) FROM
+		<include refid="table" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+
+	<!-- 按查询条件删除 -->
+	<delete id="deleteBy">
+        DELETE FROM <include refid="table" /> 
+		<where>
+			<include refid="condition_sql" />
+		</where>
+    </delete>
+
+	<!-- 根据多个id查询 -->
+    <select id="listByIdList" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" />
+		FROM <include refid="table" />
+		WHERE ID IN 
+		<foreach collection="list" item="item" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+	</select>
+
+	<!-- 根据id查询 -->
+    <select id="getById" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" />
+		FROM <include refid="table" /> 
+		WHERE ID = #{id,jdbcType=BIGINT}  
+	</select>
+
+	<!-- 按id主键删除 -->
+	<delete id="deleteById">
+        DELETE FROM <include refid="table" /> WHERE ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+	<!-- 按多个id主键删除 -->
+	<delete id="deleteByIdList" parameterType="list">
+		DELETE FROM <include refid="table" />
+		WHERE ID IN 
+		<foreach collection="list" item="item" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+	</delete>
+
+	<!-- ↑↑↑↑↑↑ 如果有新增字段、删除字段、修改字段 以上内容可用模板生成新内容后直接替换 ↑↑↑↑↑↑ -->
+	<!-- ↓↓↓↓↓↓ 以下内容是根据需求手动添加或修改的，请勿使用模板内容直接覆盖 ↓↓↓↓↓↓ -->
+
+	<sql id="condition_sql">
+		<if test="id != null ">
+			AND ID = #{id,jdbcType=BIGINT}
+		</if>
+		<if test="idList != null and idList.size() > 0">
+			AND ID IN <foreach collection="idList" item="item" index="index" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+		</if>
+		<if test="createTime != null ">
+			AND CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="shortName != null and shortName !='' ">
+			AND SHORT_NAME = #{shortName,jdbcType=VARCHAR}
+		</if>
+		<if test="fullName != null and fullName !='' ">
+			AND FULL_NAME = #{fullName,jdbcType=VARCHAR}
+		</if>
+		<if test="bankType != null ">
+			AND BANK_TYPE = #{bankType,jdbcType=SMALLINT}
+		</if>
+		<if test="tradeType != null and tradeType !='' ">
+			AND TRADE_TYPE = #{tradeType,jdbcType=VARCHAR}
+		</if>
+		<if test="status != null ">
+			AND STATUS = #{status,jdbcType=SMALLINT}
+		</if>
+		<if test="nuccIdentify != null and nuccIdentify !='' ">
+			AND NUCC_IDENTIFY = #{nuccIdentify,jdbcType=VARCHAR}
+		</if>
+		<if test="b2bCode != null and b2bCode !='' ">
+			AND B2B_CODE = #{b2bCode,jdbcType=VARCHAR}
+		</if>
+		<if test="b2cCode != null and b2cCode !='' ">
+			AND B2C_CODE = #{b2cCode,jdbcType=VARCHAR}
+		</if>
+		<if test="isB2b != null ">
+			AND IS_B2B = #{isB2b,jdbcType=BIT}
+		</if>
+		<if test="isB2c != null ">
+			AND IS_B2C = #{isB2c,jdbcType=BIT}
+		</if>
+		<if test="isCharge != null ">
+			AND IS_CHARGE = #{isCharge,jdbcType=BIT}
+		</if>
+		<if test="isPay != null ">
+			AND IS_PAY = #{isPay,jdbcType=BIT}
+		</if>
+		<if test="isAuth != null ">
+			AND IS_AUTH = #{isAuth,jdbcType=BIT}
+		</if>
+		<if test="isFastpay != null ">
+			AND IS_FASTPAY = #{isFastpay,jdbcType=BIT}
+		</if>
+		<if test="remark != null and remark !='' ">
+			AND REMARK = #{remark,jdbcType=VARCHAR}
+		</if>
+	</sql>
+</mapper>
+

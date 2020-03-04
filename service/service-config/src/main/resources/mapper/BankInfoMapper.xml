@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xpay.facade.config.entity.BankInfo">
+	<sql id="table"> tbl_bank_bank_info </sql>
+
+	<!-- 用于返回的bean对象 -->
+	<resultMap id="BaseResultMap" type="com.xpay.facade.config.entity.BankInfo">
+		<result column="ID" property="id" jdbcType="BIGINT"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="VERSION" property="version" jdbcType="SMALLINT"/>
+		<result column="BANK_CHANNEL_NO" property="bankChannelNo" jdbcType="VARCHAR"/>
+		<result column="BANK_NAME" property="bankName" jdbcType="VARCHAR"/>
+		<result column="BANK_TYPE" property="bankType" jdbcType="SMALLINT"/>
+		<result column="CLEAR_BANK_CHANNEL_NO" property="clearBankChannelNo" jdbcType="VARCHAR"/>
+		<result column="HEAD_OFFICE_SHORT_NAME" property="headOfficeShortName" jdbcType="VARCHAR"/>
+		<result column="HEAD_OFFICE_FULL_NAME" property="headOfficeFullName" jdbcType="VARCHAR"/>
+		<result column="PROVINCE" property="province" jdbcType="VARCHAR"/>
+		<result column="CITY" property="city" jdbcType="VARCHAR"/>
+		<result column="CITY_CODE" property="cityCode" jdbcType="SMALLINT"/>
+		<result column="IS_IN_PROVINCE" property="isInProvince" jdbcType="SMALLINT"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,
+		CREATE_TIME,
+		VERSION,
+		BANK_CHANNEL_NO,
+		BANK_NAME,
+		BANK_TYPE,
+		CLEAR_BANK_CHANNEL_NO,
+		HEAD_OFFICE_SHORT_NAME,
+		HEAD_OFFICE_FULL_NAME,
+		PROVINCE,
+		CITY,
+		CITY_CODE,
+		IS_IN_PROVINCE
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xpay.facade.config.entity.BankInfo">
+		INSERT INTO <include refid="table" /> (
+        	CREATE_TIME,
+        	VERSION,
+        	BANK_CHANNEL_NO,
+        	BANK_NAME,
+        	BANK_TYPE,
+        	CLEAR_BANK_CHANNEL_NO,
+        	HEAD_OFFICE_SHORT_NAME,
+        	HEAD_OFFICE_FULL_NAME,
+        	PROVINCE,
+        	CITY,
+        	CITY_CODE,
+        	IS_IN_PROVINCE
+        ) VALUES (
+			#{createTime,jdbcType=TIMESTAMP},
+			0,
+			#{bankChannelNo,jdbcType=VARCHAR},
+			#{bankName,jdbcType=VARCHAR},
+			#{bankType,jdbcType=SMALLINT},
+			#{clearBankChannelNo,jdbcType=VARCHAR},
+			#{headOfficeShortName,jdbcType=VARCHAR},
+			#{headOfficeFullName,jdbcType=VARCHAR},
+			#{province,jdbcType=VARCHAR},
+			#{city,jdbcType=VARCHAR},
+			#{cityCode,jdbcType=SMALLINT},
+			#{isInProvince,jdbcType=SMALLINT}
+        )
+	</insert>
+
+	<!-- 批量插入记录 -->
+	<insert id="batchInsert" useGeneratedKeys="true" keyProperty="id" parameterType="list">
+		INSERT INTO <include refid="table" /> (
+        	CREATE_TIME,
+        	VERSION,
+        	BANK_CHANNEL_NO,
+        	BANK_NAME,
+        	BANK_TYPE,
+        	CLEAR_BANK_CHANNEL_NO,
+        	HEAD_OFFICE_SHORT_NAME,
+        	HEAD_OFFICE_FULL_NAME,
+        	PROVINCE,
+        	CITY,
+        	CITY_CODE,
+        	IS_IN_PROVINCE
+        ) VALUES 
+			<foreach collection="list" item="item" separator=",">
+			(
+			#{item.createTime,jdbcType=TIMESTAMP},
+			0,
+			#{item.bankChannelNo,jdbcType=VARCHAR},
+			#{item.bankName,jdbcType=VARCHAR},
+			#{item.bankType,jdbcType=SMALLINT},
+			#{item.clearBankChannelNo,jdbcType=VARCHAR},
+			#{item.headOfficeShortName,jdbcType=VARCHAR},
+			#{item.headOfficeFullName,jdbcType=VARCHAR},
+			#{item.province,jdbcType=VARCHAR},
+			#{item.city,jdbcType=VARCHAR},
+			#{item.cityCode,jdbcType=SMALLINT},
+			#{item.isInProvince,jdbcType=SMALLINT}
+			)
+			</foreach>
+	</insert>
+
+	<!-- 更新 -->
+	<update id="update" parameterType="com.xpay.facade.config.entity.BankInfo">
+        UPDATE <include refid="table" />
+		<set>
+			CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			VERSION = #{version,jdbcType=SMALLINT} + 1,
+			BANK_CHANNEL_NO = #{bankChannelNo,jdbcType=VARCHAR},
+			BANK_NAME = #{bankName,jdbcType=VARCHAR},
+			BANK_TYPE = #{bankType,jdbcType=SMALLINT},
+			CLEAR_BANK_CHANNEL_NO = #{clearBankChannelNo,jdbcType=VARCHAR},
+			HEAD_OFFICE_SHORT_NAME = #{headOfficeShortName,jdbcType=VARCHAR},
+			HEAD_OFFICE_FULL_NAME = #{headOfficeFullName,jdbcType=VARCHAR},
+			PROVINCE = #{province,jdbcType=VARCHAR},
+			CITY = #{city,jdbcType=VARCHAR},
+			CITY_CODE = #{cityCode,jdbcType=SMALLINT},
+			IS_IN_PROVINCE = #{isInProvince,jdbcType=SMALLINT}
+		</set>
+        WHERE ID = #{id,jdbcType=BIGINT} and VERSION = #{version,jdbcType=SMALLINT}
+	</update>
+
+	<!-- 只更新不为null的属性 -->
+	<update id="updateIfNotNull" parameterType="com.xpay.facade.config.entity.BankInfo">
+		UPDATE <include refid="table" />
+		<set>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			VERSION = #{version,jdbcType=SMALLINT} + 1,
+			<if test="bankChannelNo != null">
+				BANK_CHANNEL_NO = #{bankChannelNo,jdbcType=VARCHAR},
+			</if>
+			<if test="bankName != null">
+				BANK_NAME = #{bankName,jdbcType=VARCHAR},
+			</if>
+			<if test="bankType != null">
+				BANK_TYPE = #{bankType,jdbcType=SMALLINT},
+			</if>
+			<if test="clearBankChannelNo != null">
+				CLEAR_BANK_CHANNEL_NO = #{clearBankChannelNo,jdbcType=VARCHAR},
+			</if>
+			<if test="headOfficeShortName != null">
+				HEAD_OFFICE_SHORT_NAME = #{headOfficeShortName,jdbcType=VARCHAR},
+			</if>
+			<if test="headOfficeFullName != null">
+				HEAD_OFFICE_FULL_NAME = #{headOfficeFullName,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				PROVINCE = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				CITY = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="cityCode != null">
+				CITY_CODE = #{cityCode,jdbcType=SMALLINT},
+			</if>
+			<if test="isInProvince != null">
+				IS_IN_PROVINCE = #{isInProvince,jdbcType=SMALLINT}
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=BIGINT} and VERSION = #{version,jdbcType=SMALLINT}
+	</update>
+	
+	<!-- 多条件组合查询 -->
+	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		<include refid="table" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		<choose>
+			<when test="sortColumns != null and sortColumns !='' ">
+				<![CDATA[ ORDER BY ${sortColumns} ]]>
+			</when>
+			<otherwise>
+				<![CDATA[ ORDER BY ID DESC ]]>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- 根据多条件组合查询，计算总记录数 -->
+	<select id="countBy" parameterType="java.util.Map" resultType="long">
+		SELECT count(ID) FROM
+		<include refid="table" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+
+	<!-- 按查询条件删除 -->
+	<delete id="deleteBy">
+        DELETE FROM <include refid="table" /> 
+		<where>
+			<include refid="condition_sql" />
+		</where>
+    </delete>
+
+	<!-- 根据多个id查询 -->
+    <select id="listByIdList" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" />
+		FROM <include refid="table" />
+		WHERE ID IN 
+		<foreach collection="list" item="item" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+	</select>
+
+	<!-- 根据id查询 -->
+    <select id="getById" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" />
+		FROM <include refid="table" /> 
+		WHERE ID = #{id,jdbcType=BIGINT}  
+	</select>
+
+	<!-- 按id主键删除 -->
+	<delete id="deleteById">
+        DELETE FROM <include refid="table" /> WHERE ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+	<!-- 按多个id主键删除 -->
+	<delete id="deleteByIdList" parameterType="list">
+		DELETE FROM <include refid="table" />
+		WHERE ID IN 
+		<foreach collection="list" item="item" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+	</delete>
+
+	<!-- ↑↑↑↑↑↑ 如果有新增字段、删除字段、修改字段 以上内容可用模板生成新内容后直接替换 ↑↑↑↑↑↑ -->
+	<!-- ↓↓↓↓↓↓ 以下内容是根据需求手动添加或修改的，请勿使用模板内容直接覆盖 ↓↓↓↓↓↓ -->
+
+	<sql id="condition_sql">
+		<if test="id != null ">
+			AND ID = #{id,jdbcType=BIGINT}
+		</if>
+		<if test="idList != null and idList.size() > 0">
+			AND ID IN <foreach collection="idList" item="item" index="index" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+		</if>
+		<if test="createTime != null ">
+			AND CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="version != null ">
+			AND VERSION = #{version,jdbcType=SMALLINT}
+		</if>
+		<if test="bankChannelNo != null and bankChannelNo !='' ">
+			AND BANK_CHANNEL_NO = #{bankChannelNo,jdbcType=VARCHAR}
+		</if>
+		<if test="bankName != null and bankName !='' ">
+			AND BANK_NAME = #{bankName,jdbcType=VARCHAR}
+		</if>
+		<if test="bankType != null ">
+			AND BANK_TYPE = #{bankType,jdbcType=SMALLINT}
+		</if>
+		<if test="clearBankChannelNo != null and clearBankChannelNo !='' ">
+			AND CLEAR_BANK_CHANNEL_NO = #{clearBankChannelNo,jdbcType=VARCHAR}
+		</if>
+		<if test="headOfficeShortName != null and headOfficeShortName !='' ">
+			AND HEAD_OFFICE_SHORT_NAME = #{headOfficeShortName,jdbcType=VARCHAR}
+		</if>
+		<if test="headOfficeFullName != null and headOfficeFullName !='' ">
+			AND HEAD_OFFICE_FULL_NAME = #{headOfficeFullName,jdbcType=VARCHAR}
+		</if>
+		<if test="province != null and province !='' ">
+			AND PROVINCE = #{province,jdbcType=VARCHAR}
+		</if>
+		<if test="city != null and city !='' ">
+			AND CITY = #{city,jdbcType=VARCHAR}
+		</if>
+		<if test="cityCode != null ">
+			AND CITY_CODE = #{cityCode,jdbcType=SMALLINT}
+		</if>
+		<if test="isInProvince != null ">
+			AND IS_IN_PROVINCE = #{isInProvince,jdbcType=SMALLINT}
+		</if>
+	</sql>
+</mapper>
+

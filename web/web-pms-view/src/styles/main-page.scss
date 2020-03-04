@@ -1,0 +1,56 @@
+.main-page {
+  font-size: 12px;
+  height: calc(100vh - 84px);
+  padding: 10px 20px;
+  background: #f7f7f7;
+
+  .main-page-header {
+    padding: 10px 20px;
+    background: #fff;
+    margin-bottom: 10px;
+
+    .search-item {
+      display: inline-block;
+      margin-right: 5px;
+      margin-bottom: 10px;
+
+      label {
+        width: 80px;
+        display: inline-block;
+        text-align: right;
+        font-weight: unset;
+      }
+
+      .el-input,
+      .el-select {
+        width: 180px;
+      }
+
+      .el-date-editor--datetimerange {
+        width: 451px;
+      }
+    }
+
+    .function-bar {
+      display: block;
+      margin-top: 10px;
+    }
+  }
+
+  .main-page-content {
+    background: #fff;
+    margin: 10px 0;
+    padding: 10px 20px;
+    overflow-y: scroll;
+  }
+
+  .main-page-footer {
+    margin: 10px 0;
+
+    .el-pagination {
+      text-align: right;
+    }
+  }
+}
+
+

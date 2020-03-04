@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xpay.facade.merchant.entity.MerchantDetail">
+    <sql id="table"> tbl_merchant_detail </sql>
+
+    <!-- 用于返回的bean对象 -->
+    <resultMap id="BaseResultMap" type="com.xpay.facade.merchant.entity.MerchantDetail">
+        <result column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="VERSION" property="version" jdbcType="BIGINT"/>
+        <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="MERCHANT_NO" property="merchantNo" jdbcType="VARCHAR"/>
+        <result column="ADDRESS" property="address" jdbcType="VARCHAR"/>
+        <result column="URL" property="url" jdbcType="VARCHAR"/>
+        <result column="ICP" property="icp" jdbcType="VARCHAR"/>
+        <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR"/>
+        <result column="FAX" property="fax" jdbcType="VARCHAR"/>
+        <result column="IP_SEG" property="ipSeg" jdbcType="VARCHAR"/>
+        <result column="BUSINESS_AREA" property="businessArea" jdbcType="SMALLINT"/>
+        <result column="EMP_NUM" property="empNum" jdbcType="SMALLINT"/>
+        <result column="BUSINESS_SCOPE" property="businessScope" jdbcType="VARCHAR"/>
+        <result column="INDUSTRY_TYPE" property="industryType" jdbcType="SMALLINT"/>
+        <result column="ESTABLISH_DATE" property="establishDate" jdbcType="DATE"/>
+        <result column="LEGAL_PERSON" property="legalPerson" jdbcType="VARCHAR"/>
+        <result column="LEGAL_PERSON_ID" property="legalPersonId" jdbcType="VARCHAR"/>
+        <result column="LEGAL_PERSON_ID_EXPIRE" property="legalPersonIdExpire" jdbcType="DATE"/>
+        <result column="LEGAL_PERSON_ID_ADDRESS" property="legalPersonIdAddress" jdbcType="VARCHAR"/>
+        <result column="LEGAL_PERSON_LOCATION" property="legalPersonLocation" jdbcType="TINYINT"/>
+        <result column="LICENSE_NO" property="licenseNo" jdbcType="VARCHAR"/>
+        <result column="LICENSE_NO_EXPIRE" property="licenseNoExpire" jdbcType="DATE"/>
+        <result column="REGISTRY_TYPE" property="registryType" jdbcType="TINYINT"/>
+        <result column="REGISTER_AMOUNT" property="registerAmount" jdbcType="DECIMAL"/>
+        <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR"/>
+        <result column="NATIONAL_TAX_NO" property="nationalTaxNo" jdbcType="VARCHAR"/>
+        <result column="LAND_TAX_NO" property="landTaxNo" jdbcType="VARCHAR"/>
+        <result column="SIGN_TIME" property="signTime" jdbcType="TIMESTAMP"/>
+        <result column="CONTRACT_EXPIRE" property="contractExpire" jdbcType="DATE"/>
+        <result column="BUSI_CONTACT_NAME" property="busiContactName" jdbcType="VARCHAR"/>
+        <result column="BUSI_CONTACT_MOBILE_NO" property="busiContactMobileNo" jdbcType="VARCHAR"/>
+        <result column="BUSI_CONTACT_EMAIL" property="busiContactEmail" jdbcType="VARCHAR"/>
+        <result column="BUSI_CONTACT_QQ" property="busiContactQq" jdbcType="VARCHAR"/>
+        <result column="TECH_CONTACT_NAME" property="techContactName" jdbcType="VARCHAR"/>
+        <result column="TECH_CONTACT_MOBILE_NO" property="techContactMobileNo" jdbcType="VARCHAR"/>
+        <result column="TECH_CONTACT_EMAIL" property="techContactEmail" jdbcType="VARCHAR"/>
+        <result column="TECH_CONTACT_QQ" property="techContactQq" jdbcType="VARCHAR"/>
+        <result column="IS_DELETE" property="isDelete" jdbcType="TINYINT"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="Base_Column_List">
+        ID,
+		CREATE_TIME,
+		VERSION,
+		MODIFY_TIME,
+		MERCHANT_NO,
+		ADDRESS,
+		URL,
+		ICP,
+		TELEPHONE,
+		FAX,
+		IP_SEG,
+		BUSINESS_AREA,
+		EMP_NUM,
+		BUSINESS_SCOPE,
+		INDUSTRY_TYPE,
+		ESTABLISH_DATE,
+		LEGAL_PERSON,
+		LEGAL_PERSON_ID,
+		LEGAL_PERSON_ID_EXPIRE,
+		LEGAL_PERSON_ID_ADDRESS,
+		LEGAL_PERSON_LOCATION,
+		LICENSE_NO,
+		LICENSE_NO_EXPIRE,
+		REGISTRY_TYPE,
+		REGISTER_AMOUNT,
+		ORG_CODE,
+		NATIONAL_TAX_NO,
+		LAND_TAX_NO,
+		SIGN_TIME,
+		CONTRACT_EXPIRE,
+		BUSI_CONTACT_NAME,
+		BUSI_CONTACT_MOBILE_NO,
+		BUSI_CONTACT_EMAIL,
+		BUSI_CONTACT_QQ,
+		TECH_CONTACT_NAME,
+		TECH_CONTACT_MOBILE_NO,
+		TECH_CONTACT_EMAIL,
+		TECH_CONTACT_QQ,
+		IS_DELETE,
+		REMARK
+    </sql>
+
+    <!-- 插入记录 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xpay.facade.merchant.entity.MerchantDetail">
+        INSERT INTO
+        <include refid="table"/>
+        (
+        CREATE_TIME,
+        VERSION,
+        MODIFY_TIME,
+        MERCHANT_NO,
+        ADDRESS,
+        URL,
+        ICP,
+        TELEPHONE,
+        FAX,
+        IP_SEG,
+        BUSINESS_AREA,
+        EMP_NUM,
+        BUSINESS_SCOPE,
+        INDUSTRY_TYPE,
+        ESTABLISH_DATE,
+        LEGAL_PERSON,
+        LEGAL_PERSON_ID,
+        LEGAL_PERSON_ID_EXPIRE,
+        LEGAL_PERSON_ID_ADDRESS,
+        LEGAL_PERSON_LOCATION,
+        LICENSE_NO,
+        LICENSE_NO_EXPIRE,
+        REGISTRY_TYPE,
+        REGISTER_AMOUNT,
+        ORG_CODE,
+        NATIONAL_TAX_NO,
+        LAND_TAX_NO,
+        SIGN_TIME,
+        CONTRACT_EXPIRE,
+        BUSI_CONTACT_NAME,
+        BUSI_CONTACT_MOBILE_NO,
+        BUSI_CONTACT_EMAIL,
+        BUSI_CONTACT_QQ,
+        TECH_CONTACT_NAME,
+        TECH_CONTACT_MOBILE_NO,
+        TECH_CONTACT_EMAIL,
+        TECH_CONTACT_QQ,
+        IS_DELETE,
+        REMARK
+        ) VALUES (
+        #{createTime,jdbcType=TIMESTAMP},
+        0,
+        #{modifyTime,jdbcType=TIMESTAMP},
+        #{merchantNo,jdbcType=VARCHAR},
+        #{address,jdbcType=VARCHAR},
+        #{url,jdbcType=VARCHAR},
+        #{icp,jdbcType=VARCHAR},
+        #{telephone,jdbcType=VARCHAR},
+        #{fax,jdbcType=VARCHAR},
+        #{ipSeg,jdbcType=VARCHAR},
+        #{businessArea,jdbcType=SMALLINT},
+        #{empNum,jdbcType=SMALLINT},
+        #{businessScope,jdbcType=VARCHAR},
+        #{industryType,jdbcType=SMALLINT},
+        #{establishDate,jdbcType=DATE},
+        #{legalPerson,jdbcType=VARCHAR},
+        #{legalPersonId,jdbcType=VARCHAR},
+        #{legalPersonIdExpire,jdbcType=DATE},
+        #{legalPersonIdAddress,jdbcType=VARCHAR},
+        #{legalPersonLocation,jdbcType=TINYINT},
+        #{licenseNo,jdbcType=VARCHAR},
+        #{licenseNoExpire,jdbcType=DATE},
+        #{registryType,jdbcType=TINYINT},
+        #{registerAmount,jdbcType=DECIMAL},
+        #{orgCode,jdbcType=VARCHAR},
+        #{nationalTaxNo,jdbcType=VARCHAR},
+        #{landTaxNo,jdbcType=VARCHAR},
+        #{signTime,jdbcType=TIMESTAMP},
+        #{contractExpire,jdbcType=DATE},
+        #{busiContactName,jdbcType=VARCHAR},
+        #{busiContactMobileNo,jdbcType=VARCHAR},
+        #{busiContactEmail,jdbcType=VARCHAR},
+        #{busiContactQq,jdbcType=VARCHAR},
+        #{techContactName,jdbcType=VARCHAR},
+        #{techContactMobileNo,jdbcType=VARCHAR},
+        #{techContactEmail,jdbcType=VARCHAR},
+        #{techContactQq,jdbcType=VARCHAR},
+        #{isDelete,jdbcType=TINYINT},
+        #{remark,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!-- 批量插入记录 -->
+    <insert id="batchInsert" useGeneratedKeys="true" keyProperty="id" parameterType="list">
+        INSERT INTO
+        <include refid="table"/>
+        (
+        CREATE_TIME,
+        VERSION,
+        MODIFY_TIME,
+        MERCHANT_NO,
+        ADDRESS,
+        URL,
+        ICP,
+        TELEPHONE,
+        FAX,
+        IP_SEG,
+        BUSINESS_AREA,
+        EMP_NUM,
+        BUSINESS_SCOPE,
+        INDUSTRY_TYPE,
+        ESTABLISH_DATE,
+        LEGAL_PERSON,
+        LEGAL_PERSON_ID,
+        LEGAL_PERSON_ID_EXPIRE,
+        LEGAL_PERSON_ID_ADDRESS,
+        LEGAL_PERSON_LOCATION,
+        LICENSE_NO,
+        LICENSE_NO_EXPIRE,
+        REGISTRY_TYPE,
+        REGISTER_AMOUNT,
+        ORG_CODE,
+        NATIONAL_TAX_NO,
+        LAND_TAX_NO,
+        SIGN_TIME,
+        CONTRACT_EXPIRE,
+        BUSI_CONTACT_NAME,
+        BUSI_CONTACT_MOBILE_NO,
+        BUSI_CONTACT_EMAIL,
+        BUSI_CONTACT_QQ,
+        TECH_CONTACT_NAME,
+        TECH_CONTACT_MOBILE_NO,
+        TECH_CONTACT_EMAIL,
+        TECH_CONTACT_QQ,
+        IS_DELETE,
+        REMARK
+        ) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.createTime,jdbcType=TIMESTAMP},
+            0,
+            #{item.modifyTime,jdbcType=TIMESTAMP},
+            #{item.merchantNo,jdbcType=VARCHAR},
+            #{item.address,jdbcType=VARCHAR},
+            #{item.url,jdbcType=VARCHAR},
+            #{item.icp,jdbcType=VARCHAR},
+            #{item.telephone,jdbcType=VARCHAR},
+            #{item.fax,jdbcType=VARCHAR},
+            #{item.ipSeg,jdbcType=VARCHAR},
+            #{item.businessArea,jdbcType=SMALLINT},
+            #{item.empNum,jdbcType=SMALLINT},
+            #{item.businessScope,jdbcType=VARCHAR},
+            #{item.industryType,jdbcType=SMALLINT},
+            #{item.establishDate,jdbcType=DATE},
+            #{item.legalPerson,jdbcType=VARCHAR},
+            #{item.legalPersonId,jdbcType=VARCHAR},
+            #{item.legalPersonIdExpire,jdbcType=DATE},
+            #{item.legalPersonIdAddress,jdbcType=VARCHAR},
+            #{item.legalPersonLocation,jdbcType=TINYINT},
+            #{item.licenseNo,jdbcType=VARCHAR},
+            #{item.licenseNoExpire,jdbcType=DATE},
+            #{item.registryType,jdbcType=TINYINT},
+            #{item.registerAmount,jdbcType=DECIMAL},
+            #{item.orgCode,jdbcType=VARCHAR},
+            #{item.nationalTaxNo,jdbcType=VARCHAR},
+            #{item.landTaxNo,jdbcType=VARCHAR},
+            #{item.signTime,jdbcType=TIMESTAMP},
+            #{item.contractExpire,jdbcType=DATE},
+            #{item.busiContactName,jdbcType=VARCHAR},
+            #{item.busiContactMobileNo,jdbcType=VARCHAR},
+            #{item.busiContactEmail,jdbcType=VARCHAR},
+            #{item.busiContactQq,jdbcType=VARCHAR},
+            #{item.techContactName,jdbcType=VARCHAR},
+            #{item.techContactMobileNo,jdbcType=VARCHAR},
+            #{item.techContactEmail,jdbcType=VARCHAR},
+            #{item.techContactQq,jdbcType=VARCHAR},
+            #{item.isDelete,jdbcType=TINYINT},
+            #{item.remark,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="com.xpay.facade.merchant.entity.MerchantDetail">
+        UPDATE
+        <include refid="table"/>
+        <set>
+            VERSION = #{version,jdbcType=BIGINT} + 1,
+            MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+            MERCHANT_NO = #{merchantNo,jdbcType=VARCHAR},
+            ADDRESS = #{address,jdbcType=VARCHAR},
+            URL = #{url,jdbcType=VARCHAR},
+            ICP = #{icp,jdbcType=VARCHAR},
+            TELEPHONE = #{telephone,jdbcType=VARCHAR},
+            FAX = #{fax,jdbcType=VARCHAR},
+            IP_SEG = #{ipSeg,jdbcType=VARCHAR},
+            BUSINESS_AREA = #{businessArea,jdbcType=SMALLINT},
+            EMP_NUM = #{empNum,jdbcType=SMALLINT},
+            BUSINESS_SCOPE = #{businessScope,jdbcType=VARCHAR},
+            INDUSTRY_TYPE = #{industryType,jdbcType=SMALLINT},
+            ESTABLISH_DATE = #{establishDate,jdbcType=DATE},
+            LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR},
+            LEGAL_PERSON_ID = #{legalPersonId,jdbcType=VARCHAR},
+            LEGAL_PERSON_ID_EXPIRE = #{legalPersonIdExpire,jdbcType=DATE},
+            LEGAL_PERSON_ID_ADDRESS = #{legalPersonIdAddress,jdbcType=VARCHAR},
+            LEGAL_PERSON_LOCATION = #{legalPersonLocation,jdbcType=TINYINT},
+            LICENSE_NO = #{licenseNo,jdbcType=VARCHAR},
+            LICENSE_NO_EXPIRE = #{licenseNoExpire,jdbcType=DATE},
+            REGISTRY_TYPE = #{registryType,jdbcType=TINYINT},
+            REGISTER_AMOUNT = #{registerAmount,jdbcType=DECIMAL},
+            ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+            NATIONAL_TAX_NO = #{nationalTaxNo,jdbcType=VARCHAR},
+            LAND_TAX_NO = #{landTaxNo,jdbcType=VARCHAR},
+            SIGN_TIME = #{signTime,jdbcType=TIMESTAMP},
+            CONTRACT_EXPIRE = #{contractExpire,jdbcType=DATE},
+            BUSI_CONTACT_NAME = #{busiContactName,jdbcType=VARCHAR},
+            BUSI_CONTACT_MOBILE_NO = #{busiContactMobileNo,jdbcType=VARCHAR},
+            BUSI_CONTACT_EMAIL = #{busiContactEmail,jdbcType=VARCHAR},
+            BUSI_CONTACT_QQ = #{busiContactQq,jdbcType=VARCHAR},
+            TECH_CONTACT_NAME = #{techContactName,jdbcType=VARCHAR},
+            TECH_CONTACT_MOBILE_NO = #{techContactMobileNo,jdbcType=VARCHAR},
+            TECH_CONTACT_EMAIL = #{techContactEmail,jdbcType=VARCHAR},
+            TECH_CONTACT_QQ = #{techContactQq,jdbcType=VARCHAR},
+            IS_DELETE = #{isDelete,jdbcType=TINYINT},
+            REMARK = #{remark,jdbcType=VARCHAR}
+        </set>
+        WHERE ID = #{id,jdbcType=BIGINT} and VERSION = #{version,jdbcType=BIGINT}
+    </update>
+
+    <!-- 只更新不为null的属性 -->
+    <update id="updateIfNotNull" parameterType="com.xpay.facade.merchant.entity.MerchantDetail">
+        UPDATE
+        <include refid="table"/>
+        <set>
+            VERSION = #{version,jdbcType=BIGINT} + 1,
+            <if test="modifyTime != null">
+                MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="merchantNo != null">
+                MERCHANT_NO = #{merchantNo,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                ADDRESS = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                URL = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="icp != null">
+                ICP = #{icp,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null">
+                TELEPHONE = #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="fax != null">
+                FAX = #{fax,jdbcType=VARCHAR},
+            </if>
+            <if test="ipSeg != null">
+                IP_SEG = #{ipSeg,jdbcType=VARCHAR},
+            </if>
+            <if test="businessArea != null">
+                BUSINESS_AREA = #{businessArea,jdbcType=SMALLINT},
+            </if>
+            <if test="empNum != null">
+                EMP_NUM = #{empNum,jdbcType=SMALLINT},
+            </if>
+            <if test="businessScope != null">
+                BUSINESS_SCOPE = #{businessScope,jdbcType=VARCHAR},
+            </if>
+            <if test="industryType != null">
+                INDUSTRY_TYPE = #{industryType,jdbcType=SMALLINT},
+            </if>
+            <if test="establishDate != null">
+                ESTABLISH_DATE = #{establishDate,jdbcType=DATE},
+            </if>
+            <if test="legalPerson != null">
+                LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonId != null">
+                LEGAL_PERSON_ID = #{legalPersonId,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonIdExpire != null">
+                LEGAL_PERSON_ID_EXPIRE = #{legalPersonIdExpire,jdbcType=DATE},
+            </if>
+            <if test="legalPersonIdAddress != null">
+                LEGAL_PERSON_ID_ADDRESS = #{legalPersonIdAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonLocation != null">
+                LEGAL_PERSON_LOCATION = #{legalPersonLocation,jdbcType=TINYINT},
+            </if>
+            <if test="licenseNo != null">
+                LICENSE_NO = #{licenseNo,jdbcType=VARCHAR},
+            </if>
+            <if test="licenseNoExpire != null">
+                LICENSE_NO_EXPIRE = #{licenseNoExpire,jdbcType=DATE},
+            </if>
+            <if test="registryType != null">
+                REGISTRY_TYPE = #{registryType,jdbcType=TINYINT},
+            </if>
+            <if test="registerAmount != null">
+                REGISTER_AMOUNT = #{registerAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="orgCode != null">
+                ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="nationalTaxNo != null">
+                NATIONAL_TAX_NO = #{nationalTaxNo,jdbcType=VARCHAR},
+            </if>
+            <if test="landTaxNo != null">
+                LAND_TAX_NO = #{landTaxNo,jdbcType=VARCHAR},
+            </if>
+            <if test="signTime != null">
+                SIGN_TIME = #{signTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="contractExpire != null">
+                CONTRACT_EXPIRE = #{contractExpire,jdbcType=DATE},
+            </if>
+            <if test="busiContactName != null">
+                BUSI_CONTACT_NAME = #{busiContactName,jdbcType=VARCHAR},
+            </if>
+            <if test="busiContactMobileNo != null">
+                BUSI_CONTACT_MOBILE_NO = #{busiContactMobileNo,jdbcType=VARCHAR},
+            </if>
+            <if test="busiContactEmail != null">
+                BUSI_CONTACT_EMAIL = #{busiContactEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="busiContactQq != null">
+                BUSI_CONTACT_QQ = #{busiContactQq,jdbcType=VARCHAR},
+            </if>
+            <if test="techContactName != null">
+                TECH_CONTACT_NAME = #{techContactName,jdbcType=VARCHAR},
+            </if>
+            <if test="techContactMobileNo != null">
+                TECH_CONTACT_MOBILE_NO = #{techContactMobileNo,jdbcType=VARCHAR},
+            </if>
+            <if test="techContactEmail != null">
+                TECH_CONTACT_EMAIL = #{techContactEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="techContactQq != null">
+                TECH_CONTACT_QQ = #{techContactQq,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                IS_DELETE = #{isDelete,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+        </set>
+        WHERE ID = #{id,jdbcType=BIGINT} and VERSION = #{version,jdbcType=BIGINT}
+    </update>
+
+    <!-- 多条件组合查询 -->
+    <select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="table"/>
+        <where>
+            <include refid="condition_sql"/>
+        </where>
+        <choose>
+            <when test="sortColumns != null and sortColumns !='' ">
+                <![CDATA[ ORDER BY ${sortColumns} ]]>
+            </when>
+            <otherwise>
+                <![CDATA[ ORDER BY ID DESC ]]>
+            </otherwise>
+        </choose>
+    </select>
+
+    <!-- 根据多条件组合查询，计算总记录数 -->
+    <select id="countBy" parameterType="java.util.Map" resultType="long">
+        SELECT count(ID) FROM
+        <include refid="table"/>
+        <where>
+            <include refid="condition_sql"/>
+        </where>
+    </select>
+
+    <!-- 按查询条件删除 -->
+    <delete id="deleteBy">
+        DELETE FROM
+        <include refid="table"/>
+        <where>
+            <include refid="condition_sql"/>
+        </where>
+    </delete>
+
+    <!-- 根据多个id查询 -->
+    <select id="listByIdList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="table"/>
+        WHERE ID IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+    </select>
+
+    <!-- 根据id查询 -->
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="table"/>
+        WHERE ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!-- 按id主键删除 -->
+    <delete id="deleteById">
+        DELETE FROM
+        <include refid="table"/>
+        WHERE ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!-- 按多个id主键删除 -->
+    <delete id="deleteByIdList" parameterType="list">
+        DELETE FROM
+        <include refid="table"/>
+        WHERE ID IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+    </delete>
+
+    <!-- ↑↑↑↑↑↑ 如果有新增字段、删除字段、修改字段 以上内容可用模板生成新内容后直接替换 ↑↑↑↑↑↑ -->
+    <!-- ↓↓↓↓↓↓ 以下内容是根据需求手动添加或修改的，请勿使用模板内容直接覆盖 ↓↓↓↓↓↓ -->
+
+    <sql id="condition_sql">
+        <if test="id != null ">
+            AND ID = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="idList != null and idList.size() > 0">
+            AND ID IN
+            <foreach collection="idList" item="item" index="index" open="(" separator="," close=")">#{item,jdbcType=BIGINT}</foreach>
+        </if>
+        <if test="createTime != null ">
+            AND CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="version != null ">
+            AND VERSION = #{version,jdbcType=BIGINT}
+        </if>
+        <if test="modifyTime != null ">
+            AND MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="merchantNo != null and merchantNo !='' ">
+            AND MERCHANT_NO = #{merchantNo,jdbcType=VARCHAR}
+        </if>
+        <if test="address != null and address !='' ">
+            AND ADDRESS = #{address,jdbcType=VARCHAR}
+        </if>
+        <if test="url != null and url !='' ">
+            AND URL = #{url,jdbcType=VARCHAR}
+        </if>
+        <if test="icp != null and icp !='' ">
+            AND ICP = #{icp,jdbcType=VARCHAR}
+        </if>
+        <if test="telephone != null and telephone !='' ">
+            AND TELEPHONE = #{telephone,jdbcType=VARCHAR}
+        </if>
+        <if test="fax != null and fax !='' ">
+            AND FAX = #{fax,jdbcType=VARCHAR}
+        </if>
+        <if test="ipSeg != null and ipSeg !='' ">
+            AND IP_SEG = #{ipSeg,jdbcType=VARCHAR}
+        </if>
+        <if test="businessArea != null ">
+            AND BUSINESS_AREA = #{businessArea,jdbcType=SMALLINT}
+        </if>
+        <if test="empNum != null ">
+            AND EMP_NUM = #{empNum,jdbcType=SMALLINT}
+        </if>
+        <if test="businessScope != null and businessScope !='' ">
+            AND BUSINESS_SCOPE = #{businessScope,jdbcType=VARCHAR}
+        </if>
+        <if test="industryType != null ">
+            AND INDUSTRY_TYPE = #{industryType,jdbcType=SMALLINT}
+        </if>
+        <if test="establishDate != null ">
+            AND ESTABLISH_DATE = #{establishDate,jdbcType=DATE}
+        </if>
+        <if test="legalPerson != null and legalPerson !='' ">
+            AND LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR}
+        </if>
+        <if test="legalPersonId != null and legalPersonId !='' ">
+            AND LEGAL_PERSON_ID = #{legalPersonId,jdbcType=VARCHAR}
+        </if>
+        <if test="legalPersonIdExpire != null ">
+            AND LEGAL_PERSON_ID_EXPIRE = #{legalPersonIdExpire,jdbcType=DATE}
+        </if>
+        <if test="legalPersonIdAddress != null and legalPersonIdAddress !='' ">
+            AND LEGAL_PERSON_ID_ADDRESS = #{legalPersonIdAddress,jdbcType=VARCHAR}
+        </if>
+        <if test="legalPersonLocation != null ">
+            AND LEGAL_PERSON_LOCATION = #{legalPersonLocation,jdbcType=TINYINT}
+        </if>
+        <if test="licenseNo != null and licenseNo !='' ">
+            AND LICENSE_NO = #{licenseNo,jdbcType=VARCHAR}
+        </if>
+        <if test="licenseNoExpire != null ">
+            AND LICENSE_NO_EXPIRE = #{licenseNoExpire,jdbcType=DATE}
+        </if>
+        <if test="registryType != null ">
+            AND REGISTRY_TYPE = #{registryType,jdbcType=TINYINT}
+        </if>
+        <if test="registerAmount != null ">
+            AND REGISTER_AMOUNT = #{registerAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="orgCode != null and orgCode !='' ">
+            AND ORG_CODE = #{orgCode,jdbcType=VARCHAR}
+        </if>
+        <if test="nationalTaxNo != null and nationalTaxNo !='' ">
+            AND NATIONAL_TAX_NO = #{nationalTaxNo,jdbcType=VARCHAR}
+        </if>
+        <if test="landTaxNo != null and landTaxNo !='' ">
+            AND LAND_TAX_NO = #{landTaxNo,jdbcType=VARCHAR}
+        </if>
+        <if test="signTime != null ">
+            AND SIGN_TIME = #{signTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="contractExpire != null ">
+            AND CONTRACT_EXPIRE = #{contractExpire,jdbcType=DATE}
+        </if>
+        <if test="busiContactName != null and busiContactName !='' ">
+            AND BUSI_CONTACT_NAME = #{busiContactName,jdbcType=VARCHAR}
+        </if>
+        <if test="busiContactMobileNo != null and busiContactMobileNo !='' ">
+            AND BUSI_CONTACT_MOBILE_NO = #{busiContactMobileNo,jdbcType=VARCHAR}
+        </if>
+        <if test="busiContactEmail != null and busiContactEmail !='' ">
+            AND BUSI_CONTACT_EMAIL = #{busiContactEmail,jdbcType=VARCHAR}
+        </if>
+        <if test="busiContactQq != null and busiContactQq !='' ">
+            AND BUSI_CONTACT_QQ = #{busiContactQq,jdbcType=VARCHAR}
+        </if>
+        <if test="techContactName != null and techContactName !='' ">
+            AND TECH_CONTACT_NAME = #{techContactName,jdbcType=VARCHAR}
+        </if>
+        <if test="techContactMobileNo != null and techContactMobileNo !='' ">
+            AND TECH_CONTACT_MOBILE_NO = #{techContactMobileNo,jdbcType=VARCHAR}
+        </if>
+        <if test="techContactEmail != null and techContactEmail !='' ">
+            AND TECH_CONTACT_EMAIL = #{techContactEmail,jdbcType=VARCHAR}
+        </if>
+        <if test="techContactQq != null and techContactQq !='' ">
+            AND TECH_CONTACT_QQ = #{techContactQq,jdbcType=VARCHAR}
+        </if>
+        <if test="isDelete != null ">
+            AND IS_DELETE = #{isDelete,jdbcType=TINYINT}
+        </if>
+        <if test="remark != null and remark !='' ">
+            AND REMARK = #{remark,jdbcType=VARCHAR}
+        </if>
+    </sql>
+
+
+    <select id="getByMerchantNo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="table"/>
+        WHERE MERCHANT_NO = #{merchantNo,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>
+
